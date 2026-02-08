@@ -12,3 +12,7 @@
 .data
 .idea
 .phpunit.result.cache
+###> phpunit/phpunit ###
+/phpunit.xml
+/.phpunit.cache/
+###< phpunit/phpunit ###
