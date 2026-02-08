@@ -17,17 +17,17 @@ class Product
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
     #[Assert\Length(min: 3, max: 255)]
-    private ?string $name = null;
+    private string $name;
 
     #[ORM\Column]
     #[Assert\NotBlank]
     #[Assert\PositiveOrZero]
-    private ?float $price = null;
+    private float $price;
 
     #[ORM\Column(length: 20)]
     #[Assert\NotBlank]
     #[Assert\Choice(choices: ['active', 'inactive'])]
-    private ?string $status = null;
+    private string $status;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;

@@ -1,22 +1,12 @@
-FROM php:8.2-fpm-alpine
+FROM php:8.2-fpm
 
-WORKDIR /var/www/html
-
-RUN apk add --no-cache \
-    postgresql-dev \
-    libpq \
+RUN apt-get update && apt-get install -y \
+    git \
+    zip \
+    unzip \
+    libpq-dev \
     && docker-php-ext-install pdo_pgsql
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-COPY composer.json composer.lock ./
-
-RUN composer install --no-dev --optimize-autoloader --no-scripts --prefer-dist
-
-COPY . .
-
-
-
-EXPOSE 9000
-
-CMD ["php-fpm"]
+WORKDIR /app
