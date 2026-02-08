@@ -11,3 +11,4 @@
 ## Local env data ###
 .data
 .idea
+.phpunit.result.cache
